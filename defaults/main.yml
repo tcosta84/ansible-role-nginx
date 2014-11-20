@@ -1,0 +1,8 @@
+---
+
+nginx_user: nginx
+nginx_worker_processes: 1
+nginx_pid: /var/run/nginx.pid
+nginx_access_log: /var/log/nginx/access.log
+nginx_error_log: /var/log/nginx/error.log
+nginx_worker_connections: 1024
