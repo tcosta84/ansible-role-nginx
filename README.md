@@ -1,5 +1,5 @@
-Role Name
-=========
+Ansible Role: Nginx
+===================
 
 Installs minimal latest Nginx version (using packages directly from nginx.org) on CentOS 6.5
 
