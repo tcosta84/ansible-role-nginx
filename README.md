@@ -22,6 +22,10 @@ Default values:
 
 You can override these values on your playbook.
 
+Optional:
+
+* nginx_sites (a list of templates)
+
 Dependencies
 ------------
 
@@ -31,6 +35,15 @@ Example Playbook
 ----------------
 
     - hosts: servers
+      roles:
+         - { role: tcosta84.nginx }
+    
+With optional variables:
+
+    - hosts: servers
+      vars:
+        - nginx_sites:
+            - { file: 'mysite.com.j2', name: 'mysite' }
       roles:
          - { role: tcosta84.nginx }
 

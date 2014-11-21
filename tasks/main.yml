@@ -28,5 +28,16 @@
 - name: Ensure conf.d directory does not exist
   file: dest=/etc/nginx/conf.d state=absent
 
+- name: Make sites available
+  template: src={{ item.file }} dest=/etc/nginx/sites-available/{{ item.name }}
+  with_items: nginx_sites
+  when: nginx_sites is defined
+
+- name: Enable sites
+  file: src=/etc/nginx/sites-available/{{ item.name }} dest=/etc/nginx/sites-enabled/{{ item.name }} state=link
+  with_items: nginx_sites
+  when: nginx_sites is defined
+  notify: reload nginx
+
 - name: Ensure service is started and that it always starts on boot
   service: name=nginx state=started enabled=yes

@@ -2,5 +2,8 @@
 
 - hosts: example
   remote_user: root
+  vars:
+    - nginx_sites:
+        - { file: '../files/nginx_vhost.j2', name: 'mysite5' }
   roles:
     - ansible-role-nginx
